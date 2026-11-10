@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tde3.MainPage"
+             BackgroundColor="#F4F6F8">
+    <!-- Cor de fundo suave estilo app -->
+
+    <ScrollView>
+        <!-- MaximumWidthRequest="420" força o conteúdo a ter a largura de um ecrã de telemóvel -->
+        <VerticalStackLayout Padding="20,50,20,20" Spacing="20" MaximumWidthRequest="420" HorizontalOptions="Center">
+
+            <!-- Cabeçalho / Boas-vindas -->
+            <VerticalStackLayout Spacing="5" Margin="0,0,0,25">
+                <Label Text="Olá, Bernardo 👋" FontSize="18" TextColor="#6C757D" FontAttributes="Bold" />
+                <Label Text="Meu Sistema" FontSize="34" FontAttributes="Bold" TextColor="#2B2D42" />
+                <Label Text="O que deseja gerenciar hoje?" FontSize="15" TextColor="#8D99AE" />
+            </VerticalStackLayout>
+
+            <!-- Botões estilo "Card" -->
+            <Frame HasShadow="True" BorderColor="Transparent" BackgroundColor="#512BD4" CornerRadius="16" Padding="0">
+                <Button Text="👥  Cadastro de Clientes" 
+                        Clicked="OnClientesClicked" 
+                        HeightRequest="85" 
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="16"/>
+            </Frame>
+
+            <Frame HasShadow="True" BorderColor="Transparent" BackgroundColor="#2B88D4" CornerRadius="16" Padding="0">
+                <Button Text="📦  Cadastro de Produtos" 
+                        Clicked="OnProdutosClicked" 
+                        HeightRequest="85" 
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="16"/>
+            </Frame>
+
+            <Frame HasShadow="True" BorderColor="Transparent" BackgroundColor="#27AE60" CornerRadius="16" Padding="0">
+                <Button Text="🛒  Registar Compras" 
+                        Clicked="OnComprasClicked" 
+                        HeightRequest="85" 
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="16"/>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

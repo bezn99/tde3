@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tde3.Views.ComprasPage"
+             Title="Registar Compras"
+             BackgroundColor="#F4F6F8">
+
+    <Grid RowDefinitions="Auto, Auto, *, Auto" MaximumWidthRequest="420" HorizontalOptions="Center" Padding="15">
+
+        <!-- Seleção de Cliente -->
+        <VerticalStackLayout Grid.Row="0" Spacing="8" Margin="0,0,0,15">
+            <Label Text="Selecione o Cliente:" FontAttributes="Bold" TextColor="#2B2D42" />
+            <Frame HasShadow="True" BorderColor="Transparent" CornerRadius="12" Padding="0" BackgroundColor="White">
+                <Picker x:Name="ClientePicker" Title="Escolha um cliente..." ItemDisplayBinding="{Binding Nome}" Margin="10,0" />
+            </Frame>
+        </VerticalStackLayout>
+
+        <!-- Adicionar Produtos -->
+        <VerticalStackLayout Grid.Row="1" Spacing="8" Margin="0,0,0,15">
+            <Label Text="Adicionar Produto:" FontAttributes="Bold" TextColor="#2B2D42" />
+            <Frame HasShadow="True" BorderColor="Transparent" CornerRadius="12" Padding="0" BackgroundColor="White">
+                <Picker x:Name="ProdutoPicker" Title="Escolha um produto..." ItemDisplayBinding="{Binding NomeProduto}" Margin="10,0" />
+            </Frame>
+            <Frame HasShadow="True" BorderColor="Transparent" CornerRadius="12" Padding="0" BackgroundColor="White">
+                <Entry x:Name="QuantidadeEntry" Placeholder="Quantidade" Keyboard="Numeric" Margin="10,0" />
+            </Frame>
+            <Button Text="Adicionar ao Carrinho" Clicked="OnAdicionarItemClicked" BackgroundColor="#2B88D4" TextColor="White" CornerRadius="12" FontAttributes="Bold" HeightRequest="45" Margin="0,5,0,0" />
+        </VerticalStackLayout>
+
+        <!-- Carrinho (Itens da Compra) -->
+        <CollectionView Grid.Row="2" x:Name="ItensListView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="15" Margin="0,5,0,5" BorderColor="Transparent" BackgroundColor="White" HasShadow="True" CornerRadius="12">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="{Binding Produto.NomeProduto}" FontAttributes="Bold" TextColor="#2B2D42" />
+                                <Label Text="{Binding Quantidade, StringFormat='Quantidade: {0}'}" TextColor="#6C757D" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" Text="{Binding ValorParcial, StringFormat='R$ {0:F2}'}" FontAttributes="Bold" VerticalOptions="Center" TextColor="#27AE60" FontSize="16" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Finalizar Compra -->
+        <VerticalStackLayout Grid.Row="3" Spacing="10" Margin="0,15,0,0">
+            <Frame HasShadow="True" BorderColor="Transparent" CornerRadius="12" Padding="15" BackgroundColor="White">
+                <Label x:Name="ValorTotalLabel" Text="Total: R$ 0,00" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#2B2D42" />
+            </Frame>
+            <Button Text="Finalizar Compra" Clicked="OnFinalizarCompraClicked" BackgroundColor="#512BD4" TextColor="White" HeightRequest="55" FontSize="16" FontAttributes="Bold" CornerRadius="12" />
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>
